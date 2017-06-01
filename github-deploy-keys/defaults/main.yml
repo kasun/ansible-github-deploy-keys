@@ -1,0 +1,4 @@
+---
+github_deploy_keys_key_title: "Ansible auto generated"
+github_deploy_keys_key_path: ~/.ssh/id_rsa.pub
+github_deploy_keys_read_only: false

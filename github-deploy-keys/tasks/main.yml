@@ -1,0 +1,35 @@
+---
+  - shell: "cat {{ github_deploy_keys_key_path }}"
+    register: ssh_public_key_result
+    changed_when: false
+
+  - set_fact: ssh_public_key="{{ ' '.join(ssh_public_key_result.stdout.split()[0:2]) }}"
+
+  - uri:
+       url: https://api.github.com/repos/{{ github_deploy_keys_github_user }}/{{ github_deploy_keys_github_repo }}/keys
+       body_format: json
+       headers:
+          Content-Type: application/json
+          Authorization: "token {{ github_deploy_keys_github_access_token }}"
+
+    register: content
+
+  - set_fact: github_saved_keys={{ content.json|map(attribute='key')|list }}
+  
+  - uri:
+       url: https://api.github.com/repos/{{ github_deploy_keys_github_user }}/{{ github_deploy_keys_github_repo }}/keys
+       method: POST
+       status_code: 201
+       body:
+          title: "{{ github_deploy_keys_key_title }}"
+          read_only: true
+          key: "{{ ssh_public_key_result.stdout }}"
+       body_format: json
+       headers:
+          Content-Type: application/json
+          Authorization: "token {{ github_deploy_keys_github_access_token }}"
+    when: ssh_public_key not in github_saved_keys
+    register: result
+    changed_when:
+      - result.status is defined
+      - result.status == 201
