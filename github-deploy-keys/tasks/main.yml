@@ -22,7 +22,7 @@
        status_code: 201
        body:
           title: "{{ github_deploy_keys_key_title }}"
-          read_only: true
+          read_only: "{{ github_deploy_keys_read_only }}"
           key: "{{ ssh_public_key_result.stdout }}"
        body_format: json
        headers:
