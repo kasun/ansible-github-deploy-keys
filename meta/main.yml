@@ -1,6 +1,6 @@
 galaxy_info:
   author: Kasun Herath
-  description:
+  description: Setup a github deploy key
   company: huemanize
 
   # If the issue tracker for your role is not on github, uncomment the
@@ -60,15 +60,9 @@ galaxy_info:
   #  - 10
   #  - 6
   #  - 9
-  #- name: MacOSX
-  #  versions:
-  #  - all
-  #  - 10.10
-  #  - 10.11
-  #  - 10.12
-  #  - 10.7
-  #  - 10.8
-  #  - 10.9
+  - name: MacOSX
+    versions:
+    - all
   #- name: Synology
   #  versions:
   #  - all
@@ -126,44 +120,19 @@ galaxy_info:
   #  - 9.1
   #  - 9.2
   #  - 9.3
-  #- name: Ubuntu
-  #  versions:
-  #  - all
-  #  - lucid
-  #  - maverick
-  #  - natty
-  #  - oneiric
-  #  - precise
-  #  - quantal
-  #  - raring
-  #  - saucy
-  #  - trusty
-  #  - utopic
-  #  - vivid
-  #  - wily
-  #  - xenial
-  #  - yakkety
-  #  - zesty
-  #- name: Debian
-  #  versions:
-  #  - all
-  #  - etch
-  #  - jessie
-  #  - lenny
-  #  - sid
-  #  - squeeze
-  #  - stretch
-  #  - wheezy
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
   #- name: Alpine
   #  versions:
   #  - all
   #  - any
-  #- name: EL
-  #  versions:
-  #  - all
-  #  - 5
-  #  - 6
-  #  - 7
+  - name: EL
+    versions:
+    - all
   #- name: Windows
   #  versions:
   #  - all
